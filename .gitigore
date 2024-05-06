@@ -1,8 +1,0 @@
-AlphaRTC/
-.venv/
-depot_tools/
-ffmpeg/
-test_data/
-vmaf/
-output.json
-*.png
