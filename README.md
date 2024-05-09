@@ -10,8 +10,8 @@ git clone https://github.com/OpenNetLab/AlphaRTC.git
 
 修改 `AlphaRTC/dockers/Dockerfile.compile` 中的 `RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git ${DEPOT_TOOLS}` 变成
 
-```bash
-git clone -b chrome/3865 https://chromium.googlesource.com/chromium/tools/depot_tools.git
+```dockerfile
+RUN git clone -b chrome/3865 https://chromium.googlesource.com/chromium/tools/depot_tools.git ${DEPOT_TOOLS}
 ```
 
 一定要
@@ -63,7 +63,7 @@ ffmpeg -threads 16 -f rawvideo -r 25 -s 320x240 -pix_fmt yuv420p -i input.yuv -c
 
 Step 1. 按照（https://github.com/Netflix/vmaf/blob/master/libvmaf/README.md）先安装 `libvmaf`。
 
-Step 2. 按照（https://github.com/Netflix/vmaf/blob/master/resource/doc/ffmpeg.md）安装 `ffmpeg+libvmaf`。其中需要注意，需要先下载 ffmpeg 的源码，再在 ffmpeg 的文件夹下输入命令：
+Step 2. 按照（https://github.com/Netflix/vmaf/blob/master/resource/doc/ffmpeg.md）安装 (需要通过github clone下来)`ffmpeg+libvmaf`。其中需要注意，需要先下载 ffmpeg 的源码，再在 ffmpeg 的文件夹下输入命令：
 
 ```bash
 ./configure --enable-libvmaf
@@ -91,11 +91,11 @@ make sure layout is like this:
 ## 运行
 
 ```bash
-chmod +x text.sh
+chmod +x test.sh
 python3 -m pip install virtualenv
 python3 -m virtualenv .venv
 source .venv/bin/activate
-pip3 install -r requirementx.txt
+pip3 install -r requirements.txt
 ```
 
 再执行下述命令进行传输：
